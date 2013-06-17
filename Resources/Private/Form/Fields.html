@@ -1,0 +1,21 @@
+{namespace form=TYPO3\Form\ViewHelpers}
+<table id="{section.uniqueIdentifier}" >
+	<thead>
+		<tr>
+			<th>Field Order</th>
+			<th>Field Label</th>
+			<th>Field Name</th>
+			<th>Field Type</th>
+		</tr>
+	</thead>
+		<f:for each="{section.elements}" as="element">
+			<form:renderRenderable renderable="{element}" />
+		</f:for>
+	<tfoot>
+		<tr>
+			<td colspan="4">
+				<a href="#" class="btn btn-primary pull-right" data-action="addField">Add New</a>
+			</td>
+		</tr>
+	</tfoot>
+</table>

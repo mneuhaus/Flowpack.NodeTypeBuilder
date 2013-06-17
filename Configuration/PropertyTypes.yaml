@@ -1,0 +1,51 @@
+'AbstractProperty':
+  properties:
+    label:
+      type: TYPO3.Form:SingleLineText
+      valuePath: ui.label
+      ui:
+        label: 'Label'
+    oldName:
+      type: TYPO3.Form:HiddenField
+      valuePath: _key
+      ui:
+        label: 'Old Name'
+    name:
+      type: TYPO3.Form:SingleLineText
+      valuePath: _key
+      ui:
+        label: 'Name'
+    type:
+      type: TYPO3.Form:SingleSelectDropdown
+      valuePath: type
+      ui:
+        label: 'Type'
+        properties:
+          options:
+            string: String
+            boolean: Boolean
+    defaultValue:
+      type: TYPO3.Form:SingleLineText
+      valuePath: defaultValue
+      ui:
+        label: 'Default Value'
+
+'string':
+  superTypes: ['AbstractProperty']
+  ui:
+    label: 'Text'
+  properties:
+    editor:
+      type: TYPO3.Form:SingleSelectDropdown
+      valuePath: ui.inspector.editor
+      ui:
+        label: 'Editor'
+        properties:
+          options:
+            none: none
+            T3.Content.UI.Editor.HtmlEditor: T3.Content.UI.Editor.HtmlEditor
+
+'boolean':
+  superTypes: ['AbstractProperty']
+  ui:
+    label: 'Boolean'

@@ -1,0 +1,8 @@
+<f:layout name="Default" />
+{namespace form=TYPO3\Form\ViewHelpers}
+
+<f:section name="Content">
+	<div class="form-wizard form-horizontal">
+		<form:render factoryClass="Flowpack\NodeTypeBuilder\Builder\FormFactory" overrideConfiguration="{nodeType: currentNodeType.name}" />
+	</div>
+</f:section>

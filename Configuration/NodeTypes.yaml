@@ -1,0 +1,52 @@
+'Flowpack.NodeTypeBuilder:AbstractNode':
+  ui:
+    label: Text
+  properties:
+    title:
+      type: string
+      defaultValue: '<p>Enter text here</p>'
+      ui:
+        label: Title
+'Flowpack.NodeTypeBuilder:Text':
+  ui:
+    label: Text
+    group: 'General'
+    icon:
+      dark: 'Images/doc_lines_stright_icon-48.png'
+  superTypes:
+    - 'Flowpack.NodeTypeBuilder:AbstractNode'
+  properties:
+    title:
+      defaultValue: '<p>Please enter a Title</p>'
+    description:
+      ui:
+        label: Description
+      type: string
+      defaultValue: '<p>Enter text here</p>'
+    foo:
+      ui:
+        label: Foo
+      type: string
+      defaultValue: '<p>Enter text here</p>'
+    bar:
+      ui:
+        label: Bar
+      type: string
+      defaultValue: '<p>Enter text here</p>'
+    yeo:
+      ui:
+        label: Yeo
+      type: string
+      defaultValue: '<p>Enter text here</p>'
+
+'Flowpack.NodeTypeBuilder:Html':
+  ui:
+    label: HTML
+  properties:
+    source:
+      type: string
+      ui:
+        label: 'HTML Content'
+        inspector:
+          editor: T3.Content.UI.Editor.HtmlEditor
+      defaultValue: '<p>Enter HTML here</p>'

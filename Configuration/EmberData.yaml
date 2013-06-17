@@ -1,0 +1,11 @@
+'Flowpack\NodeTypeBuilder\Domain\Model\Type':
+  name: 'type'
+  propertyMapping:
+    properties:
+      sideload: TRUE
+      onlyIdentifier: TRUE
+      name: property_ids
+
+'Flowpack\NodeTypeBuilder\Domain\Model\Property':
+  name: 'property'
+  plural: 'properties'

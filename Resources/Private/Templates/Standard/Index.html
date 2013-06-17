@@ -1,0 +1,116 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Index view of Standard controller</f:section>
+
+<f:section name="Content">
+	<script data-template-name="application" type="text/x-handlebars">
+      <div class="container-app">
+        {{outlet}}
+      </div>
+    </script>
+
+    <script data-template-name="index" type="text/x-handlebars">
+      Hello World
+    </script>
+
+    <script data-template-name="types" type="text/x-handlebars">
+      <div class="item-list">
+        {{#each type in controller}}
+          <div class="media item" {{action "editType" type }} {{bindAttr class="type.class" data-id="type.id"}} >
+            <a class="pull-left" href="#">
+              <img class="media-object" {{bindAttr src="type.icon"}} />
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">{{type.label}}</h4>
+              <b class="muted">{{type.name}}</b>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="content">{{ outlet }}</div>
+    </script>
+
+    <script data-template-name="types/index" type="text/x-handlebars">
+      Please select a Type
+    </script>
+
+    <script data-template-name="type" type="text/x-handlebars">
+      <h1>{{label}}</h1>
+      <div class="form-wizard form-horizontal">
+        <table>
+          <thead>
+            <tr>
+              <th>Field Order</th>
+              <th>Field Label</th>
+              <th>Field Name</th>
+              <th>Field Type</th>
+            </tr>
+          </thead>
+          {{#each property in properties}}
+            {{ render 'property' property}}
+          {{/each}}
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <a class="btn btn-primary pull-right" {{action "addProperty" this }}>Add New</a>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </script>
+
+    <script data-template-name="property" type="text/x-handlebars">
+      <tbody id="{section.uniqueIdentifier}" class="property-wrapper active">
+        <tr class="property">
+          <td>&nbsp;</td>
+          <td>
+            <a href="#"><strong>{{property.label}}</strong></a>
+            <div class="actions">
+              <a href="#">Edit</a> | <a href="#">Duplicate</a> | <a href="#">Delete</a>
+            </div>
+          </td>
+          <td>{{property.name}}</td>
+          <td>{{property.typeChanged.label}}</td>
+        </tr>
+        <tr class="fields">
+          <td colspan="4">
+            <div class="field-wrapper">
+              <fieldset>
+                <!--<div class="alert">
+                This property is defined in the supertype <b>{{property.superType}}</b>.
+                Any changes made here will be written to the current NodeType to override the supertype.
+                </div>-->
+                {{#each attribute in property.type.attributes}}
+                  {{render 'attribute' attribute}}
+                {{/each}}
+              </fieldset>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </script>
+
+    <script data-template-name="attribute" type="text/x-handlebars">
+      <div class="control-group clearfix">
+        <label class="control-label" for="{element.uniqueIdentifier}">{{attribute.label}}</label>
+        <div class="controls">
+          {{#if attribute.template}}
+            {{ view App.FormElementView templateNameBinding="attribute.template" }}
+          {{/if}}
+        </div>
+      </div>
+    </script>
+
+    <script data-template-name="SingleLineText" type="text/x-handlebars">
+      {{view Ember.TextField valueBinding="attribute.value"}}
+    </script>
+
+    <script data-template-name="SingleSelectDropdown" type="text/x-handlebars">
+      {{view Ember.Select
+        contentBinding="attribute.options"
+        optionValuePath="content.id"
+        optionLabelPath="content.label"
+        valueBinding="attribute.value" }}
+    </script>
+</f:section>

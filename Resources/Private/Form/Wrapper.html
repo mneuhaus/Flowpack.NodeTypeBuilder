@@ -1,0 +1,34 @@
+{namespace form=TYPO3\Form\ViewHelpers}
+<tbody id="{section.uniqueIdentifier}" class="property-wrapper {section.properties.class}" data-type="{section.properties.name}">
+	<tr class="property">
+		<td>&nbsp;</td>
+		<td>
+			<a href="#" class="field-toggle"><strong data-binding="label">{section.properties.label}</strong></a>
+			<div class="actions">
+				<a href="#" class="field-toggle">Edit</a> | <a href="#" data-action="duplicate">Duplicate</a> | <a href="#" data-action="delete">Delete</a>
+			</div>
+		</td>
+		<td data-binding="name">
+		{section.properties.name}
+		</td>
+		<td data-binding="type">{section.properties.propertyType.name}</td>
+	</tr>
+	<tr class="fields">
+		<td colspan="4">
+			<div class="field-wrapper">
+				<fieldset>
+
+					<f:if condition="{section.properties.propertyBelongsToSuperNodeType}">
+					<div class="alert">
+					This property is defined in the supertype <b>{section.properties.nodeType.name}</b>.
+					Any changes made here will be written to the current NodeType to override the supertype.
+					</div>
+					</f:if>
+					<f:for each="{section.elements}" as="element">
+						<form:renderRenderable renderable="{element}" />
+					</f:for>
+				</fieldset>
+			</div>
+		</td>
+	</tr>
+</tbody>

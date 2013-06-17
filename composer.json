@@ -1,0 +1,16 @@
+{
+  "name": "flowpack/nodetypebuilder",
+  "type": "typo3-flow-package",
+  "description": null,
+  "version": null,
+  "require": {
+    "typo3/flow": "*",
+    "TYPO3/TYPO3CR": "*",
+    "TYPO3/Form": "*"
+  },
+  "autoload": {
+    "psr-0": {
+      "Flowpack\\NodeTypeBuilder": "Classes"
+    }
+  }
+}

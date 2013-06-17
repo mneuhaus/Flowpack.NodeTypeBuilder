@@ -1,0 +1,25 @@
+TYPO3:
+  Form:
+    presets:
+      default:
+        formElementTypes:
+
+          'TYPO3.Form:Base':
+            renderingOptions:
+              templatePathPattern: 'resource://{@package}/Private/Form/{@type}.html'
+              partialPathPattern: 'resource://{@package}/Private/Form/Partials/{@type}.html'
+              layoutPathPattern: 'resource://Flowpack.NodeTypeBuilder/Private/Form/Layouts/{@type}.html'
+
+          'Flowpack.NodeTypeBuilder:Fields':
+            superTypes: ['TYPO3.Form:Section']
+
+          'Flowpack.NodeTypeBuilder:Wrapper':
+            superTypes: ['TYPO3.Form:Section']
+
+Radmiraal:
+  Emberjs:
+    restInterfaces:
+      type:
+        routePath: 'types'
+        model: 'Flowpack\NodeTypeBuilder\Domain\Model\Type'
+        repository: 'Flowpack\NodeTypeBuilder\Domain\Repository\TypeRepository'
